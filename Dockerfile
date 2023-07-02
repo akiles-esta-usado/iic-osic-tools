@@ -1,7 +1,7 @@
 #######################################################################
 # Setup base image
 #######################################################################
-ARG BASE_IMAGE=ubuntu:jammy
+ARG BASE_IMAGE=riscv64/ubuntu:jammy
 FROM ${BASE_IMAGE} as base
 ARG CONTAINER_TAG=unknown
 ENV IIC_OSIC_TOOLS_VERSION=${CONTAINER_TAG} \

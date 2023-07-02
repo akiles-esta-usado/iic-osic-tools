@@ -25,12 +25,12 @@ pip3 install --upgrade --no-cache-dir \
 	jupyterlab-night
 
 
-echo "[INFO] Install EDA packages via GEM"
-gem install \
-	rggen \
-	rggen-verilog \
-	rggen-vhdl
+#echo "[INFO] Install EDA packages via GEM"
+#gem install \
+#	rggen \
+#	rggen-verilog \
+#	rggen-vhdl
 
-echo "[INFO] Install EDA packages via NPM"
-npm install -g \
-	netlistsvg
+#echo "[INFO] Install EDA packages via NPM"
+#npm install -g \
+#	netlistsvg

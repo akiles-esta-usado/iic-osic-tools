@@ -7,16 +7,6 @@ UBUNTU_VERSION=$(awk -F= '/^VERSION_ID/{print $2}' /etc/os-release | sed 's/"//g
 apt-get -y update && apt-get -y upgrade
 apt-get -y install tzdata software-properties-common
 
-echo "[INFO] Adding Mozilla PPA"
-add-apt-repository -y ppa:mozillateam/ppa
-# Add PPA to apt preferences list, so PPA > snap
-echo '
-Package: *
-Pin: release o=LP-PPA-mozillateam
-Pin-Priority: 1001
-' | tee /etc/apt/preferences.d/mozilla-firefox
-
-
 if [[ $UBUNTU_VERSION == 22.04 ]]; then
 echo "[INFO] Install APT packages for Ubuntu 22.04"
 apt-get -y install \
@@ -24,7 +14,7 @@ apt-get -y install \
 	automake \
 	autotools-dev \
 	bc \
-	binutils-gold \
+	binutils \
 	bison \
 	build-essential \
 	bzip2 \
@@ -87,7 +77,6 @@ apt-get -y install \
 	libmpfr-dev \
 	libncurses-dev \
 	libnss-wrapper \
-	libomp-dev \
 	libopenmpi-dev \
 	libpcre++-dev \
 	libpcre2-dev \
@@ -121,8 +110,6 @@ apt-get -y install \
 	llvm-13-dev \
 	make \
 	ninja-build \
-	nodejs \
-	npm \
 	openmpi-bin \
 	openssl \
 	patch \
