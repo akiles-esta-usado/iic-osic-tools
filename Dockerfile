@@ -58,35 +58,35 @@ RUN bash install_ihp.sh
 #######################################################################
 # Compile covered 
 #######################################################################
-FROM base as covered
-ARG COVERED_REPO_URL="https://github.com/hpretl/verilog-covered"
-ARG COVERED_REPO_COMMIT="19d30fc942642b14dc24e95331cd4777c8dcbad9"
-ARG COVERED_NAME="covered"
-COPY images/covered/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as covered
+# ARG COVERED_REPO_URL="https://github.com/hpretl/verilog-covered"
+# ARG COVERED_REPO_COMMIT="19d30fc942642b14dc24e95331cd4777c8dcbad9"
+# ARG COVERED_NAME="covered"
+# COPY images/covered/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile cvc_rv (part of OpenLane)
 #######################################################################
-FROM base as cvc_rv
-ARG CVC_RV_REPO_URL="https://github.com/d-m-bailey/cvc"
-ARG CVC_RV_REPO_COMMIT="df85a637e83da870129c93c8793cad282bb8ddd1"
-ARG CVC_RV_NAME="cvc_rv"
-COPY images/cvc_rv/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as cvc_rv
+# ARG CVC_RV_REPO_URL="https://github.com/d-m-bailey/cvc"
+# ARG CVC_RV_REPO_COMMIT="df85a637e83da870129c93c8793cad282bb8ddd1"
+# ARG CVC_RV_NAME="cvc_rv"
+# COPY images/cvc_rv/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile fault
 #######################################################################
 # FIXME build dependencies clean as stand-alone stages
-FROM base as fault
-ARG FAULT_REPO_URL="https://github.com/Cloud-V/Fault"
-ARG FAULT_REPO_COMMIT="54e8665d638393a2e482b237b4ad2b5c02c7ec9a"
-ARG FAULT_NAME="fault"
-COPY images/fault/scripts/dependencies.sh dependencies.sh
-RUN bash dependencies.sh
-COPY images/fault/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as fault
+# ARG FAULT_REPO_URL="https://github.com/Cloud-V/Fault"
+# ARG FAULT_REPO_COMMIT="54e8665d638393a2e482b237b4ad2b5c02c7ec9a"
+# ARG FAULT_NAME="fault"
+# COPY images/fault/scripts/dependencies.sh dependencies.sh
+# RUN bash dependencies.sh
+# COPY images/fault/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile gaw3-xschem
@@ -111,12 +111,12 @@ RUN bash install.sh
 #######################################################################
 # Compile ghdl
 #######################################################################
-FROM base as ghdl
-ARG GHDL_REPO_URL="https://github.com/ghdl/ghdl.git"
-ARG GHDL_REPO_COMMIT="v3.0.0"
-ARG GHDL_NAME="ghdl"
-COPY images/ghdl/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as ghdl
+# ARG GHDL_REPO_URL="https://github.com/ghdl/ghdl.git"
+# ARG GHDL_REPO_COMMIT="v3.0.0"
+# ARG GHDL_NAME="ghdl"
+# COPY images/ghdl/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile gtkwave
@@ -141,19 +141,19 @@ RUN bash install.sh
 #######################################################################
 # Compile iverilog
 #######################################################################
-FROM base as iverilog
-ARG IVERILOG_REPO_URL="https://github.com/steveicarus/iverilog.git"
-ARG IVERILOG_REPO_COMMIT="b210eb82645cb99275e9cccad8348e7d18c96b10"
-ARG IVERILOG_NAME="iverilog"
-COPY images/iverilog/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as iverilog
+# ARG IVERILOG_REPO_URL="https://github.com/steveicarus/iverilog.git"
+# ARG IVERILOG_REPO_COMMIT="b210eb82645cb99275e9cccad8348e7d18c96b10"
+# ARG IVERILOG_NAME="iverilog"
+# COPY images/iverilog/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile klayout (part of OpenLane)
 #######################################################################
 FROM basepkg as klayout
 ARG KLAYOUT_REPO_URL="https://github.com/KLayout/klayout"
-ARG KLAYOUT_REPO_COMMIT="44a2aa9ca17c2b1c154f9c410ded063de9ed3e12"
+ARG KLAYOUT_REPO_COMMIT="41c136b6fcc0936264e7676934ceb7d3b97989fc"
 ARG KLAYOUT_NAME="klayout"
 COPY images/klayout/scripts/install.sh install.sh
 RUN bash install.sh
@@ -191,42 +191,42 @@ RUN bash install.sh
 #######################################################################
 # Compile nvc (VHDL simulator)
 #######################################################################
-FROM base as nvc
-ARG NVC_REPO_URL="https://github.com/nickg/nvc"
-ARG NVC_REPO_COMMIT="r1.9.2"
-ARG NVC_NAME="nvc"
-COPY images/nvc/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as nvc
+# ARG NVC_REPO_URL="https://github.com/nickg/nvc"
+# ARG NVC_REPO_COMMIT="r1.9.2"
+# ARG NVC_NAME="nvc"
+# COPY images/nvc/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile openlane (part of OpenLane)
 #######################################################################
-FROM basepkg as openlane
-ARG OPENLANE_REPO_URL="https://github.com/The-OpenROAD-Project/OpenLane"
-ARG OPENLANE_REPO_COMMIT="2023.05.31"
-ARG OPENLANE_NAME="openlane"
-COPY images/openlane/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM basepkg as openlane
+# ARG OPENLANE_REPO_URL="https://github.com/The-OpenROAD-Project/OpenLane"
+# ARG OPENLANE_REPO_COMMIT="2023.05.31"
+# ARG OPENLANE_NAME="openlane"
+# COPY images/openlane/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile openroad (part of OpenLane)
 #######################################################################
-FROM base as openroad_app
-ARG OPENROAD_APP_REPO_URL="https://github.com/The-OpenROAD-Project/OpenROAD.git"
-ARG OPENROAD_APP_REPO_COMMIT="9a713f0e8a51769207918da28adfd3c02b854375"
-ARG OPENROAD_APP_NAME="openroad"
-COPY images/openroad/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as openroad_app
+# ARG OPENROAD_APP_REPO_URL="https://github.com/The-OpenROAD-Project/OpenROAD.git"
+# ARG OPENROAD_APP_REPO_COMMIT="9a713f0e8a51769207918da28adfd3c02b854375"
+# ARG OPENROAD_APP_NAME="openroad"
+# COPY images/openroad/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile padring (part of OpenLane)
 #######################################################################
-FROM base as padring
-ARG PADRING_REPO_URL="https://github.com/donn/padring"
-ARG PADRING_REPO_COMMIT="b2a64abcc8561d758c0bcb3945117dcb13bd9dca"
-ARG PADRING_NAME="padring"
-COPY images/padring/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as padring
+# ARG PADRING_REPO_URL="https://github.com/donn/padring"
+# ARG PADRING_REPO_COMMIT="b2a64abcc8561d758c0bcb3945117dcb13bd9dca"
+# ARG PADRING_NAME="padring"
+# COPY images/padring/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile pyopus
@@ -261,29 +261,29 @@ RUN bash install.sh
 #######################################################################
 # Compile riscv-gnu-toolchain-rv32i
 #######################################################################
-FROM base as riscv-gnu-toolchain-rv32i
-ARG RISCV_GNU_TOOLCHAIN_RV32I_REPO_URL="https://github.com/riscv-collab/riscv-gnu-toolchain.git"
-ARG RISCV_GNU_TOOLCHAIN_RV32I_REPO_COMMIT="2023.05.31"
-ARG RISCV_GNU_TOOLCHAIN_RV32I_NAME="riscv-gnu-toolchain-rv32i"
-COPY images/riscv-gnu-toolchain-rv32i/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as riscv-gnu-toolchain-rv32i
+# ARG RISCV_GNU_TOOLCHAIN_RV32I_REPO_URL="https://github.com/riscv-collab/riscv-gnu-toolchain.git"
+# ARG RISCV_GNU_TOOLCHAIN_RV32I_REPO_COMMIT="2023.05.31"
+# ARG RISCV_GNU_TOOLCHAIN_RV32I_NAME="riscv-gnu-toolchain-rv32i"
+# COPY images/riscv-gnu-toolchain-rv32i/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile verilator (part of OpenLane)
 #######################################################################
-FROM base as verilator
-ARG VERILATOR_REPO_URL="https://github.com/verilator/verilator"
-ARG VERILATOR_REPO_COMMIT="947402bc57625106e1387255772fdb5d850a6c65"
-ARG VERILATOR_NAME="verilator"
-COPY images/verilator/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as verilator
+# ARG VERILATOR_REPO_URL="https://github.com/verilator/verilator"
+# ARG VERILATOR_REPO_COMMIT="947402bc57625106e1387255772fdb5d850a6c65"
+# ARG VERILATOR_NAME="verilator"
+# COPY images/verilator/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile xschem
 #######################################################################
 FROM base as xschem
 ARG XSCHEM_REPO_URL="https://github.com/StefanSchippers/xschem.git"
-ARG XSCHEM_REPO_COMMIT="e9c85698001c51db6bdb3625bc353284a3a40002"
+ARG XSCHEM_REPO_COMMIT="f95580906a92b60d66d1201eff9380793ec52bc0"
 ARG XSCHEM_NAME="xschem"
 COPY images/xschem/scripts/install.sh install.sh
 RUN bash install.sh
@@ -311,21 +311,21 @@ RUN bash install.sh
 #######################################################################
 # Compile yosys (part of OpenLane) & yosys-ghdl-plugin
 #######################################################################
-FROM base as yosys
-ARG YOSYS_REPO_URL="https://github.com/YosysHQ/yosys"
-ARG YOSYS_REPO_COMMIT="101075611fc5698739180017bf96b1abf140c8e7"
-ARG YOSYS_NAME="yosys"
-COPY images/yosys/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as yosys
+# ARG YOSYS_REPO_URL="https://github.com/YosysHQ/yosys"
+# ARG YOSYS_REPO_COMMIT="101075611fc5698739180017bf96b1abf140c8e7"
+# ARG YOSYS_NAME="yosys"
+# COPY images/yosys/scripts/install.sh install.sh
+# RUN bash install.sh
 
-FROM base as ghdl-yosys-plugin
-ARG GHDL_YOSYS_PLUGIN_REPO_URL="https://github.com/ghdl/ghdl-yosys-plugin.git"
-ARG GHDL_YOSYS_PLUGIN_REPO_COMMIT="5b64ccfdeee6c75f70487c1ea153ec3e1fb26cd1"
-ARG GHDL_YOSYS_PLUGIN_NAME="ghdl-yosys-plugin"
-COPY --from=yosys	${TOOLS}    ${TOOLS}
-COPY --from=ghdl	${TOOLS}    ${TOOLS}
-COPY images/ghdl-yosys-plugin/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as ghdl-yosys-plugin
+# ARG GHDL_YOSYS_PLUGIN_REPO_URL="https://github.com/ghdl/ghdl-yosys-plugin.git"
+# ARG GHDL_YOSYS_PLUGIN_REPO_COMMIT="5b64ccfdeee6c75f70487c1ea153ec3e1fb26cd1"
+# ARG GHDL_YOSYS_PLUGIN_NAME="ghdl-yosys-plugin"
+# COPY --from=yosys	${TOOLS}    ${TOOLS}
+# COPY --from=ghdl	${TOOLS}    ${TOOLS}
+# COPY images/ghdl-yosys-plugin/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile different components for the rftoolkit
@@ -366,38 +366,38 @@ ENV OMPI_MCA_btl_vader_single_copy_mechanism=none
 
 # Copy all layers into the final container
 COPY --from=open_pdks                    ${PDK_ROOT}/           ${PDK_ROOT}/
-COPY --from=covered                      ${TOOLS}/              ${TOOLS}/
-COPY --from=cvc_rv                       ${TOOLS}/              ${TOOLS}/
-COPY --from=fault                        ${TOOLS}/              ${TOOLS}/
-COPY --from=fault                        /opt/swift/usr/lib/    /opt/swift/usr/lib/
+# COPY --from=covered                      ${TOOLS}/              ${TOOLS}/
+# COPY --from=cvc_rv                       ${TOOLS}/              ${TOOLS}/
+# COPY --from=fault                        ${TOOLS}/              ${TOOLS}/
+# COPY --from=fault                        /opt/swift/usr/lib/    /opt/swift/usr/lib/
 COPY --from=gaw3-xschem                  ${TOOLS}/              ${TOOLS}/
 COPY --from=gds3d                        ${TOOLS}/              ${TOOLS}/
 COPY --from=gds3d                        ${PDK_ROOT}/           ${PDK_ROOT}/
-COPY --from=ghdl                         ${TOOLS}/              ${TOOLS}/
+# COPY --from=ghdl                         ${TOOLS}/              ${TOOLS}/
 COPY --from=gtkwave                      ${TOOLS}/              ${TOOLS}/
 COPY --from=irsim                        ${TOOLS}/              ${TOOLS}/
-COPY --from=iverilog                     ${TOOLS}/              ${TOOLS}/
+# COPY --from=iverilog                     ${TOOLS}/              ${TOOLS}/
 COPY --from=klayout                      ${TOOLS}/              ${TOOLS}/
 COPY --from=magic                        ${TOOLS}/              ${TOOLS}/
 COPY --from=netgen                       ${TOOLS}/              ${TOOLS}/
-COPY --from=nvc                          ${TOOLS}/              ${TOOLS}/
+# COPY --from=nvc                          ${TOOLS}/              ${TOOLS}/
 COPY --from=ngspice                      ${TOOLS}/              ${TOOLS}/
 COPY --from=ngspyce                      ${TOOLS}/              ${TOOLS}/
-COPY --from=openlane                     ${TOOLS}/              ${TOOLS}/
-COPY --from=openroad_app                 ${TOOLS}/              ${TOOLS}/
+# COPY --from=openlane                     ${TOOLS}/              ${TOOLS}/
+# COPY --from=openroad_app                 ${TOOLS}/              ${TOOLS}/
 COPY --from=osic-multitool               ${TOOLS}/              ${TOOLS}/
-COPY --from=padring                      ${TOOLS}/              ${TOOLS}/
+# COPY --from=padring                      ${TOOLS}/              ${TOOLS}/
 COPY --from=pyopus                       ${TOOLS}/              ${TOOLS}/
 COPY --from=qflow                        ${TOOLS}/              ${TOOLS}/
 COPY --from=qucs-s                       ${TOOLS}/              ${TOOLS}/
 COPY --from=rftoolkit                    ${TOOLS}/              ${TOOLS}/
-COPY --from=riscv-gnu-toolchain-rv32i    ${TOOLS}/              ${TOOLS}/
-COPY --from=verilator                    ${TOOLS}/              ${TOOLS}/
+# COPY --from=riscv-gnu-toolchain-rv32i    ${TOOLS}/              ${TOOLS}/
+# COPY --from=verilator                    ${TOOLS}/              ${TOOLS}/
 COPY --from=xschem                       ${TOOLS}/              ${TOOLS}/
 COPY --from=xyce                         ${TOOLS}/              ${TOOLS}/
 COPY --from=xyce-xdm                     ${TOOLS}/              ${TOOLS}/
 COPY --from=yosys                        ${TOOLS}/              ${TOOLS}/
-COPY --from=ghdl-yosys-plugin            ${TOOLS}_add/          ${TOOLS}/
+# COPY --from=ghdl-yosys-plugin            ${TOOLS}_add/          ${TOOLS}/
 
 # Copy skeleton and tool version file for OpenLane
 COPY images/iic-osic-tools/skel /
