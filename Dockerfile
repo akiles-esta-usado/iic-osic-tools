@@ -121,12 +121,12 @@ RUN bash install.sh
 #######################################################################
 # Compile gtkwave
 #######################################################################
-FROM base as gtkwave
-ARG GTKWAVE_REPO_URL="https://github.com/gtkwave/gtkwave"
-ARG GTKWAVE_REPO_COMMIT="f31b549cfeca6f6c71f029ea0e9f9d46d5663beb"
-ARG GTKWAVE_NAME="gtkwave"
-COPY images/gtkwave/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as gtkwave
+# ARG GTKWAVE_REPO_URL="https://github.com/gtkwave/gtkwave"
+# ARG GTKWAVE_REPO_COMMIT="f31b549cfeca6f6c71f029ea0e9f9d46d5663beb"
+# ARG GTKWAVE_NAME="gtkwave"
+# COPY images/gtkwave/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile irsim
@@ -181,12 +181,12 @@ RUN bash install.sh
 #######################################################################
 # Compile ngspyce
 #######################################################################
-FROM basepkg as ngspyce
-ARG NGSPYCE_REPO_URL="https://github.com/ignamv/ngspyce"
-ARG NGSPYCE_REPO_COMMIT="154a2724080e3bf15827549bba9f315cd11984fe"
-ARG NGSPYCE_NAME="ngspyce"
-COPY images/ngspyce/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM basepkg as ngspyce
+# ARG NGSPYCE_REPO_URL="https://github.com/ignamv/ngspyce"
+# ARG NGSPYCE_REPO_COMMIT="154a2724080e3bf15827549bba9f315cd11984fe"
+# ARG NGSPYCE_NAME="ngspyce"
+# COPY images/ngspyce/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile nvc (VHDL simulator)
@@ -241,22 +241,22 @@ RUN bash install.sh
 #######################################################################
 # Compile qflow helper files
 #######################################################################
-FROM base as qflow
-ARG QFLOW_REPO_URL="https://github.com/RTimothyEdwards/qflow.git"
-ARG QFLOW_REPO_COMMIT="b0f76bf4b7dddd59badd67f462e50ed8c9be484c"
-ARG QFLOW_NAME="qflow"
-COPY images/qflow/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as qflow
+# ARG QFLOW_REPO_URL="https://github.com/RTimothyEdwards/qflow.git"
+# ARG QFLOW_REPO_COMMIT="b0f76bf4b7dddd59badd67f462e50ed8c9be484c"
+# ARG QFLOW_NAME="qflow"
+# COPY images/qflow/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile qucs-s
 #######################################################################
-FROM base as qucs-s
-ARG QUCS_REPO_URL="https://github.com/ra3xdh/qucs_s"
-ARG QUCS_REPO_COMMIT="1.0.2"
-ARG QUCS_NAME="qucs-s"
-COPY images/qucs-s/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as qucs-s
+# ARG QUCS_REPO_URL="https://github.com/ra3xdh/qucs_s"
+# ARG QUCS_REPO_COMMIT="1.0.2"
+# ARG QUCS_NAME="qucs-s"
+# COPY images/qucs-s/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile riscv-gnu-toolchain-rv32i
@@ -292,21 +292,21 @@ RUN bash install.sh
 # Compile xyce & xyce-xdm
 #######################################################################
 # FIXME build trilinos as own image, clean with commit etc.
-FROM base as xyce
-ARG XYCE_REPO_URL="https://github.com/Xyce/Xyce.git"
-ARG XYCE_REPO_COMMIT="Release-7.6.0"
-ARG XYCE_NAME="xyce"
-COPY images/xyce/scripts/trilinos.reconfigure.sh /trilinos.reconfigure.sh
-COPY images/xyce/scripts/xyce.reconfigure.sh /xyce.reconfigure.sh
-COPY images/xyce/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM base as xyce
+# ARG XYCE_REPO_URL="https://github.com/Xyce/Xyce.git"
+# ARG XYCE_REPO_COMMIT="Release-7.6.0"
+# ARG XYCE_NAME="xyce"
+# COPY images/xyce/scripts/trilinos.reconfigure.sh /trilinos.reconfigure.sh
+# COPY images/xyce/scripts/xyce.reconfigure.sh /xyce.reconfigure.sh
+# COPY images/xyce/scripts/install.sh install.sh
+# RUN bash install.sh
 
-FROM xyce as xyce-xdm
-ARG XYCE_XDM_REPO_URL="https://github.com/Xyce/XDM"
-ARG XYCE_XDM_REPO_COMMIT="Release-2.6.0"
-ARG XYCE_XDM_NAME="xyce-xdm"
-COPY images/xyce-xdm/scripts/install.sh install.sh
-RUN bash install.sh
+# FROM xyce as xyce-xdm
+# ARG XYCE_XDM_REPO_URL="https://github.com/Xyce/XDM"
+# ARG XYCE_XDM_REPO_COMMIT="Release-2.6.0"
+# ARG XYCE_XDM_NAME="xyce-xdm"
+# COPY images/xyce-xdm/scripts/install.sh install.sh
+# RUN bash install.sh
 
 #######################################################################
 # Compile yosys (part of OpenLane) & yosys-ghdl-plugin
@@ -374,7 +374,7 @@ COPY --from=gaw3-xschem                  ${TOOLS}/              ${TOOLS}/
 COPY --from=gds3d                        ${TOOLS}/              ${TOOLS}/
 COPY --from=gds3d                        ${PDK_ROOT}/           ${PDK_ROOT}/
 # COPY --from=ghdl                         ${TOOLS}/              ${TOOLS}/
-COPY --from=gtkwave                      ${TOOLS}/              ${TOOLS}/
+# COPY --from=gtkwave                      ${TOOLS}/              ${TOOLS}/
 COPY --from=irsim                        ${TOOLS}/              ${TOOLS}/
 # COPY --from=iverilog                     ${TOOLS}/              ${TOOLS}/
 COPY --from=klayout                      ${TOOLS}/              ${TOOLS}/
@@ -382,20 +382,20 @@ COPY --from=magic                        ${TOOLS}/              ${TOOLS}/
 COPY --from=netgen                       ${TOOLS}/              ${TOOLS}/
 # COPY --from=nvc                          ${TOOLS}/              ${TOOLS}/
 COPY --from=ngspice                      ${TOOLS}/              ${TOOLS}/
-COPY --from=ngspyce                      ${TOOLS}/              ${TOOLS}/
+# COPY --from=ngspyce                      ${TOOLS}/              ${TOOLS}/
 # COPY --from=openlane                     ${TOOLS}/              ${TOOLS}/
 # COPY --from=openroad_app                 ${TOOLS}/              ${TOOLS}/
 COPY --from=osic-multitool               ${TOOLS}/              ${TOOLS}/
 # COPY --from=padring                      ${TOOLS}/              ${TOOLS}/
 # COPY --from=pyopus                       ${TOOLS}/              ${TOOLS}/
-COPY --from=qflow                        ${TOOLS}/              ${TOOLS}/
-COPY --from=qucs-s                       ${TOOLS}/              ${TOOLS}/
+# COPY --from=qflow                        ${TOOLS}/              ${TOOLS}/
+# COPY --from=qucs-s                       ${TOOLS}/              ${TOOLS}/
 COPY --from=rftoolkit                    ${TOOLS}/              ${TOOLS}/
 # COPY --from=riscv-gnu-toolchain-rv32i    ${TOOLS}/              ${TOOLS}/
 # COPY --from=verilator                    ${TOOLS}/              ${TOOLS}/
 COPY --from=xschem                       ${TOOLS}/              ${TOOLS}/
-COPY --from=xyce                         ${TOOLS}/              ${TOOLS}/
-COPY --from=xyce-xdm                     ${TOOLS}/              ${TOOLS}/
+# COPY --from=xyce                         ${TOOLS}/              ${TOOLS}/
+# COPY --from=xyce-xdm                     ${TOOLS}/              ${TOOLS}/
 # COPY --from=yosys                        ${TOOLS}/              ${TOOLS}/
 # COPY --from=ghdl-yosys-plugin            ${TOOLS}_add/          ${TOOLS}/
 
