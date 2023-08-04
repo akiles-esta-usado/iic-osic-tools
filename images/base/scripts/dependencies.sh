@@ -7,15 +7,6 @@ UBUNTU_VERSION=$(awk -F= '/^VERSION_ID/{print $2}' /etc/os-release | sed 's/"//g
 apt-get -y update && apt-get -y upgrade
 apt-get -y install tzdata software-properties-common
 
-echo "[INFO] Adding Mozilla PPA"
-add-apt-repository -y ppa:mozillateam/ppa
-# Add PPA to apt preferences list, so PPA > snap
-echo '
-Package: *
-Pin: release o=LP-PPA-mozillateam
-Pin-Priority: 1001
-' | tee /etc/apt/preferences.d/mozilla-firefox
-
 
 if [[ $UBUNTU_VERSION == 22.04 ]]; then
 echo "[INFO] Install APT packages for Ubuntu 22.04"
@@ -187,21 +178,6 @@ _install_boost () {
 	./b2 install
 }
 _install_boost
-
-
-# Install or-tools (dependency of OpenROAD)
-ORTOOLS_VERSION=9.6
-echo "[INFO] Installing ORTOOLS version $ORTOOLS_VERSION"
-_install_ortools () {
-	cd /tmp || exit 1
-	wget --no-verbose "https://github.com/google/or-tools/archive/refs/tags/v$ORTOOLS_VERSION.tar.gz"
-	tar -xf "v$ORTOOLS_VERSION.tar.gz"
-	cd "or-tools-$ORTOOLS_VERSION" || exit 1
-    cmake -B build . -DBUILD_DEPS:BOOL=ON
-    cmake --build build -j "$(nproc)" --target install
-}
-_install_ortools
-
 
 # Upgrade pip and install important packages
 # FIXME: PIP upgrade fails on x86, so remove it

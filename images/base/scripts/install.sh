@@ -5,7 +5,6 @@ set -e
 echo "[INFO] Install EDA packages via PIP"
 pip3 install --upgrade --no-cache-dir \
 	amaranth \
-	cocotb \
 	edalize \
 	fusesoc \
 	gdsfactory \
