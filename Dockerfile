@@ -396,12 +396,12 @@ COPY --from=rftoolkit                    ${TOOLS}/              ${TOOLS}/
 COPY --from=xschem                       ${TOOLS}/              ${TOOLS}/
 COPY --from=xyce                         ${TOOLS}/              ${TOOLS}/
 COPY --from=xyce-xdm                     ${TOOLS}/              ${TOOLS}/
-COPY --from=yosys                        ${TOOLS}/              ${TOOLS}/
+# COPY --from=yosys                        ${TOOLS}/              ${TOOLS}/
 # COPY --from=ghdl-yosys-plugin            ${TOOLS}_add/          ${TOOLS}/
 
 # Copy skeleton and tool version file for OpenLane
-COPY images/iic-osic-tools/skel /
-COPY tool_metadata.yml /
+# COPY images/iic-osic-tools/skel /
+# COPY tool_metadata.yml /
 
 # Allow scripts to be executed by any user
 RUN find $STARTUPDIR/scripts -name '*.sh' -exec chmod a+x {} +
@@ -410,9 +410,9 @@ RUN find $STARTUPDIR/scripts -name '*.sh' -exec chmod a+x {} +
 RUN $STARTUPDIR/scripts/install.sh
 
 # Install examples
-RUN git clone https://github.com/iic-jku/SKY130_SAR-ADC1        ${EXAMPLES}/SKY130_SAR-ADC1 && \
-    git clone https://github.com/iic-jku/SKY130_PLL1.git        ${EXAMPLES}/SKY130_PLL1 && \
-    git clone https://github.com/mabrains/Analog_blocks.git     ${EXAMPLES}/SKY130_ANALOG-BLOCKS
+# RUN git clone https://github.com/iic-jku/SKY130_SAR-ADC1        ${EXAMPLES}/SKY130_SAR-ADC1 && \
+#     git clone https://github.com/iic-jku/SKY130_PLL1.git        ${EXAMPLES}/SKY130_PLL1 && \
+#     git clone https://github.com/mabrains/Analog_blocks.git     ${EXAMPLES}/SKY130_ANALOG-BLOCKS
 
 # Finalize setup/install
 RUN $STARTUPDIR/scripts/post_install.sh
