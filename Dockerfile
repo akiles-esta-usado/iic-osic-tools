@@ -400,8 +400,8 @@ COPY --from=xschem                       ${TOOLS}/              ${TOOLS}/
 # COPY --from=ghdl-yosys-plugin            ${TOOLS}_add/          ${TOOLS}/
 
 # Copy skeleton and tool version file for OpenLane
-# COPY images/iic-osic-tools/skel /
-# COPY tool_metadata.yml /
+COPY images/iic-osic-tools/skel /
+COPY tool_metadata.yml /
 
 # Allow scripts to be executed by any user
 RUN find $STARTUPDIR/scripts -name '*.sh' -exec chmod a+x {} +
