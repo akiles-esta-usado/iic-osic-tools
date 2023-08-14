@@ -27,15 +27,15 @@ if [ -d "$PDK_ROOT/sky130A" ]; then
     echo "source $SCRIPT_DIR/iic-magic-bindkeys" 	>> "$PDK_ROOT/sky130A/libs.tech/magic/sky130A.magicrc"
 fi
 
-if [ -d "$PDK_ROOT/sky130B" ]; then
-	cd "$PDK_ROOT/sky130B/libs.tech/ngspice" || exit 1
-	"$SCRIPT_DIR/iic-spice-model-red.py" sky130.lib.spice tt
-	"$SCRIPT_DIR/iic-spice-model-red.py" sky130.lib.spice ss
-	"$SCRIPT_DIR/iic-spice-model-red.py" sky130.lib.spice ff
+# if [ -d "$PDK_ROOT/sky130B" ]; then
+# 	cd "$PDK_ROOT/sky130B/libs.tech/ngspice" || exit 1
+# 	"$SCRIPT_DIR/iic-spice-model-red.py" sky130.lib.spice tt
+# 	"$SCRIPT_DIR/iic-spice-model-red.py" sky130.lib.spice ss
+# 	"$SCRIPT_DIR/iic-spice-model-red.py" sky130.lib.spice ff
 
-    echo "# Custom bindkeys for IIC" 		        >> "$PDK_ROOT/sky130B/libs.tech/magic/sky130B.magicrc"
-    echo "source $SCRIPT_DIR/iic-magic-bindkeys" 	>> "$PDK_ROOT/sky130B/libs.tech/magic/sky130B.magicrc"
-fi
+#     echo "# Custom bindkeys for IIC" 		        >> "$PDK_ROOT/sky130B/libs.tech/magic/sky130B.magicrc"
+#     echo "source $SCRIPT_DIR/iic-magic-bindkeys" 	>> "$PDK_ROOT/sky130B/libs.tech/magic/sky130B.magicrc"
+# fi
 
 # FIXME: Repair klayout tech file
 sed -i 's/>sky130</>sky130A</g' "$PDK_ROOT/sky130A/libs.tech/klayout/tech/sky130A.lyt"
